@@ -35,7 +35,7 @@ def runner(method, params=None):
 
 #getmempoolinfo
 getmempoolinfo = runner("getmempoolinfo")
-mempool_size = getmempoolinfo["size"]
+mempool_tx_count = getmempoolinfo["size"]
 mempool_bytes = getmempoolinfo["bytes"]
 mempool_memory_usage = getmempoolinfo["usage"]
 
@@ -67,7 +67,7 @@ json_body = [
         "fields": {
             "mempool_memory": int(mempool_memory_usage),
             "mempool_bytes": float(mempool_bytes),
-            "mempool_size": float(mempool_size),
+            "mempool_tx_count": float(mempool_tx_count),
             "mempool_networkhashps": float(networkhashps),
             "mempool_estimate_fee": float(estimate_fee),
             "mempool_difficulty": float(difficulty)
@@ -105,7 +105,7 @@ for bestblock in range(startheight,height):
   getblock = runner("getblock",blockhash_string)
 
   block_version = getblock["version"]
-  block_disk_size = len(getblock["tx"])
+  block_tx_count = len(getblock["tx"])
   block_mediantime = getblock["mediantime"]
   block_difficulty = getblock["difficulty"]
   block_sizelimit = getblock["sizelimit"]
@@ -125,7 +125,7 @@ for bestblock in range(startheight,height):
         "fields": {
             "block_height": block_height,
             "block_version": int(block_version),
-            "block_disk_size": int(block_disk_size),
+            "block_tx_count": int(block_tx_count),
             "block_difficulty": float(block_difficulty),
             "block_sizelimit": float(block_sizelimit),
             "block_size": float(block_size)
