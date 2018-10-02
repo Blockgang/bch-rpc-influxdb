@@ -95,7 +95,10 @@ json_body = [
 client.write_points(json_body)
 
 height = block
-startheight = height - 25 
+
+# after reading from 0 you can enable this:
+# startheight = height - 25
+startheight = 0
 
 for bestblock in range(startheight,height):
 
@@ -125,7 +128,7 @@ for bestblock in range(startheight,height):
         "fields": {
             "block_height": block_height,
             "block_version": int(block_version),
-            "block_tx_count": int(block_tx_count),
+            "block_tx_count": float(block_tx_count),
             "block_difficulty": float(block_difficulty),
             "block_sizelimit": float(block_sizelimit),
             "block_size": float(block_size)
